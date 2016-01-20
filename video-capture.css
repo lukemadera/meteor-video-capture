@@ -1,0 +1,16 @@
+.lm-video-capture-video-section {
+  text-align: center;
+  position: relative;
+}
+.lm-video-capture-processing {
+  position: absolute;
+  z-index: 99;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  opacity: 0.9;
+  padding-top: 20px;
+}
+.lm-video-capture-message {
+  text-align: center;
+}

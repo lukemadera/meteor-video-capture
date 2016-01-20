@@ -1,0 +1,31 @@
+<template name="lmVideoCapture">
+
+  <div class='lm-video-capture-video-section'>
+    {{ #unless data.platformSupport.supported }}
+      <div class='lm-video-capture-message'>{{ data.platformSupport.message }}</div>
+    {{ else }}
+
+      {{ #if data.processing }}
+        <div class='lm-video-capture-processing'>
+          Video is processing.. This could take up to 15 seconds. Thank you for being patient.
+        </div>
+      {{ /if }}
+      <div>
+        <button class='lm-video-capture-record-start-btn'>Record</button>
+        {{ #if data.showStopButton }}
+          <button class='lm-video-capture-record-stop-btn'>Stop</button>
+        {{ /if }}
+      </div>
+
+      <div class='lm-video-capture-video'>
+        <video autoplay width='{{ data.videoDisplay.width }}' height='{{ data.videoDisplay.height }}' controls></video>
+      </div>
+      {{ #if data.countdownTimer }}
+        <div class='lm-video-capture-countdown'>
+          Time left: {{ data.countdownTimer }}
+        </div>
+      {{ /if }}
+    {{ /unless }}
+  </div>
+
+</template>

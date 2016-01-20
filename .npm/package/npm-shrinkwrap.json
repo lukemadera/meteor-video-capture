@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "webrtc-adapter-test": {
+      "version": "0.2.5"
+    }
+  }
+}
