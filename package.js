@@ -19,11 +19,11 @@ Package.onUse(function(api) {
 
   // api.use(['cordova:org.apache.cordova.media-capture@0.3.6'], 'client');
 
-  api.use(['cosmos:browserify@0.9.2'], 'client');
-  Npm.depends({
-    // 'recordrtc': '5.2.4'
-    'webrtc-adapter-test': '0.2.5'
-  });
+  // api.use(['cosmos:browserify@0.9.2'], 'client');
+  // Npm.depends({
+  //   // 'recordrtc': '5.2.4'
+  //   'webrtc-adapter-test': '0.2.5'
+  // });
 
   Cordova.depends({
     'org.apache.cordova.media-capture': '1.1.0'
@@ -31,7 +31,7 @@ Package.onUse(function(api) {
   });
 
   api.addFiles([
-    'client.browserify.js',
+    // 'client.browserify.js',
     'video-capture.html',
     'video-capture.css',
   ], 'client');
