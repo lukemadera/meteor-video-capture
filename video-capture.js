@@ -427,14 +427,15 @@ _videoCapture.platformSupport =function() {
 };
 
 _videoCapture.init =function(templateInst) {
-  if(!templateInst.inited) {
-    _videoCapture.opts =templateInst.data && templateInst.data.opts || {};
-    var key;
-    for(key in _videoCapture.optsDefaults) {
-      if(_videoCapture.opts[key] === undefined) {
-        _videoCapture.opts[key] =_videoCapture.optsDefaults[key];
-      }
+  _videoCapture.opts =templateInst.data && templateInst.data.opts || {};
+  var key;
+  for(key in _videoCapture.optsDefaults) {
+    if(_videoCapture.opts[key] === undefined) {
+      _videoCapture.opts[key] =_videoCapture.optsDefaults[key];
     }
+  }
+
+  if(!templateInst.inited) {
     if(!Meteor.isCordova) {
       _videoCapture.getUserMedia();
     }
