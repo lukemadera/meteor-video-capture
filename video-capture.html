@@ -11,9 +11,9 @@
         </div>
       {{ /if }}
       <div>
-        <button class='lm-video-capture-record-start-btn'>Record</button>
+        <div class='lm-video-capture-record-start-btn {{data.classes.recordBtn}}'>Record</div>
         {{ #if data.showStopButton }}
-          <button class='lm-video-capture-record-stop-btn'>Stop</button>
+          <div class='lm-video-capture-record-stop-btn {{data.classes.stopBtn}}'>Stop</div>
         {{ /if }}
       </div>
 

@@ -14,3 +14,10 @@
 .lm-video-capture-message {
   text-align: center;
 }
+.lm-video-capture-record-start-btn-style, .lm-video-capture-record-stop-btn-style {
+  display: inline-block;
+  cursor: pointer;
+}
+.lm-video-capture-record-stop-btn-style {
+  margin-left: 10px;
+}

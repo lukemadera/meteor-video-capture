@@ -28,6 +28,10 @@ _videoCapture ={
     videoDisplay: {
       width: 300,
       height: 230
+    },
+    classes: {
+      recordBtn: 'lm-video-capture-record-start-btn-style',
+      stopBtn: 'lm-video-capture-record-stop-btn-style'
     }
   },
   timeouts: {
@@ -422,6 +426,22 @@ _videoCapture.platformSupport =function() {
   return ret;
 };
 
+_videoCapture.init =function(templateInst) {
+  if(!templateInst.inited) {
+    _videoCapture.opts =templateInst.data && templateInst.data.opts || {};
+    var key;
+    for(key in _videoCapture.optsDefaults) {
+      if(_videoCapture.opts[key] === undefined) {
+        _videoCapture.opts[key] =_videoCapture.optsDefaults[key];
+      }
+    }
+    if(!Meteor.isCordova) {
+      _videoCapture.getUserMedia();
+    }
+    templateInst.inited =true;
+  }
+};
+
 if(Meteor.isClient) {
 
   Template.lmVideoCapture.created =function() {
@@ -432,29 +452,23 @@ if(Meteor.isClient) {
       display: null
     });
     this.processing = new ReactiveVar(false);
+    this.inited =false;
   };
 
-  Template.lmVideoCapture.rendered =function() {
-    _videoCapture.opts =this.data && this.data.opts || {};
-    var key;
-    for(key in _videoCapture.optsDefaults) {
-      if(_videoCapture.opts[key] === undefined) {
-        _videoCapture.opts[key] =_videoCapture.optsDefaults[key];
-      }
-    }
-    if(!Meteor.isCordova) {
-      _videoCapture.getUserMedia();
-    }
-  };
+  // Template.lmVideoCapture.rendered =function() {
+    
+  // };
 
   Template.lmVideoCapture.helpers({
     data: function() {
-      var countdownData =Template.instance().countdownData.get();
+      var templateInst =Template.instance();
+      _videoCapture.init(templateInst);
       return {
-        countdownTimer: countdownData.display,
-        processing: Template.instance().processing.get(),
+        countdownTimer: templateInst.countdownData.get().display,
+        processing: templateInst.processing.get(),
         showStopButton: Meteor.isCordova ? false : true,
         videoDisplay: _videoCapture.opts.videoDisplay,
+        classes: _videoCapture.opts.classes,
         platformSupport: _videoCapture.platformSupport()
       };
     }
