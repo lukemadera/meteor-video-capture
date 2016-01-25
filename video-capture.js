@@ -401,7 +401,8 @@ _videoCapture.getPlatform =function() {
     blackberry: /BlackBerry/i.test(navigator.userAgent),
     windows: /IEMobile/i.test(navigator.userAgent),
     // http://stackoverflow.com/questions/9847580/how-to-detect-safari-chrome-ie-firefox-and-opera-browser
-    firefox: typeof InstallTrigger !== 'undefined'
+    // firefox: typeof InstallTrigger !== 'undefined',
+    // chrome: !!window.chrome && !!window.chrome.webstore
   };
 };
 
@@ -409,7 +410,7 @@ _videoCapture.platformSupport =function() {
   var platform =_videoCapture.getPlatform();
   var ret ={
     supported: ( ( Meteor.isCordova && ( platform.android || platform.ios ) )
-     || platform.firefox ) ? true : false,
+     || typeof MediaRecorder !== 'undefined' ) ? true : false,
     message: null
   };
   if( Meteor.isCordova && platform.android ) {
@@ -421,7 +422,7 @@ _videoCapture.platformSupport =function() {
   }
   else if( !ret.supported) {
     ret.message =
-     "Video capture is only supported on Firefox, Android and iOS. Chrome coming soon.";
+     "Video capture is only supported on Firefox, Android and iOS. Chrome coming soon (v49).";
   }
   return ret;
 };

@@ -1,3 +1,10 @@
+# 1.0.7
+
+## Features
+
+- Switch to feature detection for MediaRecorder rather than browser sniffing. Chrome should start working at v49.
+
+
 # 1.0.6
 
 ## Features

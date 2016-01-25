@@ -1,6 +1,6 @@
 Package.describe({
   name: 'lukemadera:video-capture',
-  version: '1.0.6',
+  version: '1.0.7',
   // Brief, one-line summary of the package.
   summary: 'Record video from user browser or device, cross platform (Web, Cordova)',
   // URL to the Git repository containing the source code for this package.
